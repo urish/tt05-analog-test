@@ -1,0 +1,21 @@
+name: gds
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  gds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build GDS
+        uses: TinyTapeout/tt-gds-action@custom_gds
+        with: 
+          gds_path: gds/tt_um_tt05_analog_test.gds
+          lef_path: lef/tt_um_tt05_analog_test.lef
+  
